@@ -28,19 +28,17 @@ Work experience
 Skills
 ======
 * Languages
-  * Python    |     C     |     C++
-  * Julia     |     bash  |     FORTRAN
+  * Python, C, C++, Julia, bash, FORTRAN
 * Database
   * MySQL
 * Technologies
-  * MATLAB    |     Latex |     Tableau
+  * MATLAB, Latex, Tableau
 * Version Control
   * Git
 * Cloud
   * AWS
 * Libraries
-  * Pandas    |     MPI  |      OpenCV
-  * Pytorch   |     scikit-learn
+  * Pandas, MPI, OpenCV, Pytorch, Scikit-learn
 
 Publications
 ======
