@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Summary of Professional Profile"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -18,24 +18,29 @@ Education
 
 Work experience
 ======
-* Fall, Spring 2021: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Summer 2022: Incoming Data Science intern, Lark Health.
+* Spring 2022: Graduate Student Assistant, Aditya Lab.
+* Fall 2021: Graduate Research Assistant, Aditya Lab.
+* Fall 2020: Undergraduate Research Assistant, Dept. of Physics, Indian Institute of Technology, Hyderabad.
+* Summer 2020: Computer Vision Intern, CrystalBall AI Pvt Ltd.
+* Fall 2019: Undergraduate Teaching Assistant, Dept. of Electrical Engineering, Indian Institute of Technology, Hyderabad.
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Languages
+  * Python    |     C     |     C++
+  * Julia     |     bash  |     FORTRAN
+* Database
+  * MySQL
+* Technologies
+  * MATLAB    |     Latex |     Tableau
+* Version Control
+  * Git
+* Cloud
+  * AWS
+* Libraries
+  * Pandas    |     MPI  |      OpenCV
+  * Pytorch   |     scikit-learn
 
 Publications
 ======
@@ -49,12 +54,16 @@ Talks
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
   
-Teaching
+<!-- Teaching
 ======
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  {% endfor %}</ul> -->
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Core (2018-2019) ; Coordinator (2019-2020) - Cepheid - The Astrophysics and Astronomy Club (IIT-H)
+* Coordinator - The Debate Club, LitSoc - The Literary Society (2018-2019) (IIT-H)
+* Founding Member - Squash Club, Member - Badminton Team (2017-2021) (IIT-H)
+* Content Coordinator - Media Cell (2018-2019) (IIT-H)
+* Marketing Manager - E-Summit (E-Cell, 2019) (IIT-H)
