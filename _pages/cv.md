@@ -14,10 +14,11 @@ Education
 * B.Tech. in Electrical Engineering, Indian Institute of Technology, Hyderabad, 2021
 * B.Tech. in Engineering Physics, Indian Institute of Technology, Hyderabad, 2021
 * M.S. in Computational Science and Engineering, Georgia Institute of Technology, 2023 (Expected)
+  * Specialization in Machine Learning and Data Science.
 
 Work experience
 ======
-* Summer 2015: Research Assistant
+* Fall, Spring 2021: Research Assistant
   * Github University
   * Duties included: Tagging issues
   * Supervisor: Professor Git
