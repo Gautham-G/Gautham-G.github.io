@@ -1,107 +1,281 @@
+/* Claude.ai Aesthetic Reskin */
+
+/* Anthropic Corporate Aesthetic - "Retro Future" */
+
 :root {
-    --bg-color: #f8f8f8; /* Light background */
-    --text-color: #333333; /* Dark gray text */
-    --link-color: #007bff; /* Blue for links */
-    --accent-color: #6c757d; /* Muted accent for headers/borders */
-    --border-color: #e0e0e0;
+    /* Muted, Organic Palette */
+    --bg-color: #F3F1E7;
+    /* Mushroom Beige */
+    --text-primary: #1F2937;
+    /* Soft Charcoal */
+    --text-secondary: #5d5d5b;
+    /* Stone Gray */
+    --accent-color: #D97757;
+    /* Terracotta/Burnt Orange */
+    --line-color: #dcdacb;
+    /* Subtle separator */
+
+    /* Typography */
+    --font-serif: 'Crimson Pro', serif;
+    --font-sans: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align content to the top */
-    min-height: 100vh;
-    padding: 20px; /* Add some padding around the main container */
-
-    /* Retro Cursor Vibe */
-    /* cursor: url('cursor.png'), auto; */
-    cursor: crosshair;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+    /* Hide default cursor */
 }
 
-a {
-    color: var(--link-color);
-    text-decoration: none;
+a,
+button,
+.cta-button {
+    cursor: none;
+    /* Ensure pointer doesn't reappear on links */
 }
 
-a:hover {
-    text-decoration: underline;
+/* Custom Cursor */
+#cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--accent-color);
+    background-color: rgba(217, 119, 87, 0.1);
+    /* Very subtle fill */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    /* Centering logic handles in JS via just translate, but initial offset helps or handle in CSS? JS sets x/y which correspond to top-left. We need to center it. Best to use margin: -10px or translate -50% */
+    margin-left: -10px;
+    /* Center circle on mouse */
+    margin-top: -10px;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    mix-blend-mode: multiply;
+    /* Cool blending effect */
 }
 
-.container {
-    max-width: 800px;
+#cursor.hover {
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    background-color: rgba(217, 119, 87, 0.2);
+    border-color: transparent;
+}
+
+/* Background Canvas */
+#ambient-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-color);
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    height: 100%;
+    z-index: -1;
+    /* Behind content */
+    opacity: 0.6;
+    /* Subtle blend */
+    pointer-events: none;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
 }
 
-header h1 {
-    font-size: 2.8em;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-
-.tagline {
-    font-size: 1.2em;
-    color: var(--accent-color);
-}
-
-main section {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px dashed var(--border-color); /* Soft separator */
-}
-
-main section:last-of-type {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-h2 {
-    font-size: 1.8em;
-    color: var(--text-color);
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-left: 4px solid var(--link-color); /* Simple accent */
-    padding-left: 10px;
-}
-
-ul {
-    list-style-type: none; /* Remove default bullet points */
-    padding-left: 0;
-}
-
-ul li {
-    margin-bottom: 8px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 40px;
+/* Header */
+.site-header {
+    display: flex;
+    justify-content: flex-end;
+    /* Align nav to right since logo is gone */
+    align-items: center;
+    margin-bottom: 120px;
     padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9em;
-    color: var(--accent-color);
 }
 
-.vibe-note {
-    margin-top: 10px;
-    font-style: italic;
+/* Logo removed */
+
+.site-header nav a {
+    margin-left: 32px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.9em;
+    color: var(--text-primary);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.site-header nav a:hover {
+    opacity: 1;
+}
+
+/* Hero */
+.hero-section {
+    margin-bottom: 120px;
+    max-width: 900px;
+}
+
+.headline {
+    font-family: var(--font-serif);
+    font-size: 4.5em;
+    /* Large, editorial */
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 40px 0;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.sub-headline {
+    font-family: var(--font-sans);
+    font-size: 1.25em;
+    color: var(--accent-color);
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.intro-text {
+    font-family: var(--font-serif);
+    font-size: 1.8em;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background-color: var(--line-color);
+    margin: 80px 0;
+    width: 100%;
+}
+
+/* Content Blocks */
+.content-block {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-family: var(--font-sans);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin: 0 0 40px 0;
+    border-left: 1px solid var(--accent-color);
+    padding-left: 16px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.grid-item h3 {
+    font-family: var(--font-serif);
+    font-size: 2em;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+}
+
+.grid-item p {
+    font-family: var(--font-serif);
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Contact */
+.contact-text {
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+    color: var(--text-primary);
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 16px 32px;
+    border-radius: 50px;
+    /* Pill shape */
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.cta-button:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+}
+
+.cta-text {
+    font-family: var(--font-sans);
+    font-size: 1em;
+    margin-right: 12px;
+}
+
+.cta-arrow {
+    font-family: var(--font-sans);
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--line-color);
+    padding-top: 40px;
+    margin-top: 120px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-sans);
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .headline {
+        font-size: 3em;
+    }
+
+    .intro-text {
+        font-size: 1.4em;
+    }
+
+    .grid-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .page-wrapper {
+        padding: 24px 20px;
+    }
+
+    .site-header {
+        margin-bottom: 60px;
+    }
 }

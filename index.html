@@ -1,52 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gautham Gururajan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Gautham Gururajan</h1>
-            <p class="tagline">Welcome to my personal corner of the internet.</p>
+    <div id="cursor"></div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <div class="page-wrapper">
+        <header class="site-header">
+            <!-- Logo removed -->
+            <div class="logo-spacer"></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="professional-summary.html">Resume</a>
+                <a href="contact.html">Contact</a>
+            </nav>
         </header>
 
         <main>
-            <section class="about">
-                <h2>About Me</h2>
-                <p>Hello! I'm Gautham Gururajan. This is a placeholder for information that would typically be found on GauthamGururajan.com. You can replace this text with your bio, professional experience, skills, and interests. Think about what you want visitors to know about you and your work.</p>
-                <p>I am passionate about [Your Passion 1], [Your Passion 2], and exploring new technologies. This site serves as a digital representation of my work and thoughts.</p>
+            <section class="hero-section">
+                <h1 class="headline">
+                    Hello.<br>
+                    I am Gautham Gururajan.
+                </h1>
+                <p class="sub-headline">
+                    Currently doing <strong>Data + AI agents @ Tesla</strong>.
+                </p>
+                <p class="intro-text">
+                    Broadly, I am interested in Data Science & Machine Learning.
+                    I build intelligent systems and explore the frontiers of data-driven decision making.
+                </p>
             </section>
 
-            <section class="projects">
-                <h2>Projects</h2>
-                <p>Here you can list some of your key projects. For each project, consider including:</p>
-                <ul>
-                    <li><strong>Project Name 1:</strong> A brief description, technologies used, and a link to the project or repository.</li>
-                    <li><strong>Project Name 2:</strong> Another project description, its impact, and relevant links.</li>
-                    <li><strong>Project Name 3:</strong> And so on...</li>
-                </ul>
-                <p>Feel free to add images or more detailed pages for each project if you wish!</p>
-            </section>
+            <div class="divider"></div>
 
-            <section class="contact">
-                <h2>Get in Touch</h2>
-                <p>I'm always open to new opportunities and collaborations. Feel free to connect with me!</p>
-                <ul>
-                    <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                    <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></li>
-                    <li>GitHub: <a href="https://github.com/GauthamGururajan">github.com/GauthamGururajan</a></li>
-                    <li>Twitter (X): <a href="https://twitter.com/yourhandle">@yourhandle</a></li>
-                </ul>
+            <section id="about" class="content-block">
+                <h2 class="section-title">The Human Side</h2>
+                <div class="grid-layout">
+                    <div class="grid-item">
+                        <h3>Curiosity</h3>
+                        <p>My work is driven by a deep curiosity about how systems work and how data can model the
+                            world.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Pursuits</h3>
+                        <p>Beyond the screen, I am an avid stargazer, enjoy playing squash, and spend time solving
+                            complex puzzles.</p>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2026 Gautham Gururajan. All rights reserved.</p>
-            <p class="vibe-note">Inspired by the Claude AI aesthetic and retro computing.</p>
+            <div class="footer-content">
+            </div>
         </footer>
     </div>
+
+    <script>
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.2;
+                this.vy = (Math.random() - 0.5) * 0.2;
+                this.size = Math.random() * 200 + 100;
+                // Warm, muted colors (Terracotta, Sand, Muted Peach)
+                const colors = ['rgba(217, 119, 87, 0.08)', 'rgba(212, 197, 169, 0.12)', 'rgba(235, 200, 180, 0.08)'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < -this.size) this.x = width + this.size;
+                if (this.x > width + this.size) this.x = -this.size;
+                if (this.y < -this.size) this.y = height + this.size;
+                if (this.y > height + this.size) this.y = -this.size;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.max(5, Math.floor(width / 200));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .cta-button');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        function animateCursor() {
+            // Smooth lerp (Linear Interpolation)
+            const speed = 0.15;
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+
+            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+    </script>
 </body>
+
 </html>
