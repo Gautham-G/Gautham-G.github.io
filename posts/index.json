@@ -1,8 +1,8 @@
 [
   {
-    "slug": "Hello World",
-    "title": "Hello World",
-    "date": "2026-01-12",
-    "excerpt": "init"
-  }
+    "slug": "hello-world",
+    "title": "Hello, World",
+    "date": "2026-01-11",
+    "excerpt": "Welcome to my new blog. A space for thoughts, ideas, and explorations."
+  },
 ]
