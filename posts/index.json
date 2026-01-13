@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "technical-demo",
+    "title": "Code, Math & Diagrams",
+    "date": "2026-01-12",
+    "excerpt": "A demonstration of technical writing features: syntax highlighting, LaTeX math, and Mermaid diagrams."
+  },
+  {
+    "slug": "hello-world",
+    "title": "Hello, World",
+    "date": "2026-01-11",
+    "excerpt": "Welcome to my new blog. A space for thoughts, ideas, and explorations."
+  },
+  {
+    "slug": "on-simplicity",
+    "title": "On Simplicity",
+    "date": "2026-01-10",
+    "excerpt": "Why less is more, and how constraints can be liberating."
+  }
+]

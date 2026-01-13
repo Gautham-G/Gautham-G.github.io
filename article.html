@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gautham Gururajan</title>
+  <title>Article</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
   <!-- Math rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16/dist/contrib/auto-render.min.js"></script>
+  <!-- Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -50,9 +58,17 @@
     </header>
 
     <main>
-      <div class="article-list" id="articles">
-        <p class="loading">Loading...</p>
-      </div>
+      <a href="index.html" class="back-link">Back</a>
+
+      <article>
+        <div class="article-header">
+          <p class="article-date" id="article-date"></p>
+          <h1 class="article-title" id="article-title">Loading...</h1>
+        </div>
+        <div class="article-content" id="article-content">
+          <p class="loading">Loading article...</p>
+        </div>
+      </article>
     </main>
 
     <footer>
