@@ -4,5 +4,11 @@
     "title": "Hello, World",
     "date": "2026-01-11",
     "excerpt": "Welcome to my new blog. A space for thoughts, ideas, and explorations."
+  },
+  {
+    "slug": "spark-jit",
+    "title": "Plan first, Execute later",
+    "date": "2026-03-22",
+    "excerpt": "Similarities between jit from JAX and lazy execute from Spark"
   }
 ]
