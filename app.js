@@ -1,8 +1,6 @@
 // Claude-Style Blog - Minimal JavaScript
 
 (function() {
-  const isArticlePage = window.location.pathname.includes('article.html');
-
   // Initialize Mermaid with Claude-style theme
   if (typeof mermaid !== 'undefined') {
     mermaid.initialize({
@@ -67,7 +65,7 @@
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       container.innerHTML = posts.map(post => `
-        <a href="article.html#${post.slug}" class="article-link">${post.title}</a>
+        <a href="#${post.slug}" class="article-link">${post.title}</a>
       `).join('');
 
       // Render math in titles
@@ -89,7 +87,6 @@
 
     const slug = getSlug();
     if (!slug) {
-      window.location.href = 'index.html';
       return;
     }
 
@@ -147,12 +144,24 @@
     }
   }
 
-  // Initialize
-  if (isArticlePage) {
-    renderArticle();
-    // Re-render when hash changes
-    window.addEventListener('hashchange', renderArticle);
-  } else {
-    renderArticleList();
+  function handleRoute() {
+    const slug = getSlug();
+    const homeView = document.getElementById('home-view');
+    const articleView = document.getElementById('article-view');
+
+    if (slug) {
+      homeView.style.display = 'none';
+      articleView.style.display = 'block';
+      renderArticle();
+    } else {
+      homeView.style.display = 'block';
+      articleView.style.display = 'none';
+      renderArticleList();
+      document.title = 'Gautham Gururajan'; // Reset title
+    }
   }
+
+  // Initialize
+  handleRoute();
+  window.addEventListener('hashchange', handleRoute);
 })();
